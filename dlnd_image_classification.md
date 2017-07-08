@@ -49,7 +49,7 @@ tests.test_folder_path(cifar10_dataset_folder_path)
 ```
 
     All files found!
-    
+
 
 ## Explore the Data
 The dataset is broken into batches to prevent your machine from running out of memory.  The CIFAR-10 dataset consists of 5 batches, named `data_batch_1`, `data_batch_2`, etc.. Each batch contains the labels and images that are one of the following:
@@ -94,7 +94,7 @@ helper.display_stats(cifar10_dataset_folder_path, batch_id, sample_id)
     Image - Min Value: 0 Max Value: 252
     Image - Shape: (32, 32, 3)
     Label - Label Id: 1 Name: automobile
-    
+
 
 
 ![png](output_3_1.png)
@@ -122,7 +122,7 @@ tests.test_normalize(normalize)
 ```
 
     Tests Passed
-    
+
 
 ### One-hot encode
 Just like the previous code cell, you'll be implementing a function for preprocessing.  This time, you'll implement the `one_hot_encode` function. The input, `x`, are a list of labels.  Implement the function to return the list of labels as One-Hot encoded Numpy array.  The possible values for labels are 0 to 9. The one-hot encoding function should return the same encoding for each value between each call to `one_hot_encode`.  Make sure to save the map of encodings outside the function.
@@ -157,7 +157,7 @@ tests.test_one_hot_encode(one_hot_encode)
 ```
 
     Tests Passed
-    
+
 
 ### Randomize Data
 As you saw from exploring the data above, the order of the samples are randomized.  It doesn't hurt to randomize it again, but you don't need to for this dataset.
@@ -261,7 +261,7 @@ tests.test_nn_keep_prob_inputs(neural_net_keep_prob_input)
     Image Input Tests Passed.
     Label Input Tests Passed.
     Keep Prob Tests Passed.
-    
+
 
 ### Convolution and Max Pooling Layer
 Convolution layers have a lot of success with images. For this code cell, you should implement the function `conv2d_maxpool` to apply convolution then max pooling:
@@ -308,7 +308,7 @@ tests.test_con_pool(conv2d_maxpool)
 ```
 
     Tests Passed
-    
+
 
 ### Flatten Layer
 Implement the `flatten` function to change the dimension of `x_tensor` from a 4-D tensor to a 2-D tensor.  The output should be the shape (*Batch Size*, *Flattened Image Size*). Shortcut option: you can use classes from the [TensorFlow Layers](https://www.tensorflow.org/api_docs/python/tf/layers) or [TensorFlow Layers (contrib)](https://www.tensorflow.org/api_guides/python/contrib.layers) packages for this layer. For more of a challenge, only use other TensorFlow packages.
@@ -331,7 +331,7 @@ tests.test_flatten(flatten)
 ```
 
     Tests Passed
-    
+
 
 ### Fully-Connected Layer
 Implement the `fully_conn` function to apply a fully connected layer to `x_tensor` with the shape (*Batch Size*, *num_outputs*). Shortcut option: you can use classes from the [TensorFlow Layers](https://www.tensorflow.org/api_docs/python/tf/layers) or [TensorFlow Layers (contrib)](https://www.tensorflow.org/api_guides/python/contrib.layers) packages for this layer. For more of a challenge, only use other TensorFlow packages.
@@ -355,7 +355,7 @@ tests.test_fully_conn(fully_conn)
 ```
 
     Tests Passed
-    
+
 
 ### Output Layer
 Implement the `output` function to apply a fully connected layer to `x_tensor` with the shape (*Batch Size*, *num_outputs*). Shortcut option: you can use classes from the [TensorFlow Layers](https://www.tensorflow.org/api_docs/python/tf/layers) or [TensorFlow Layers (contrib)](https://www.tensorflow.org/api_guides/python/contrib.layers) packages for this layer. For more of a challenge, only use other TensorFlow packages.
@@ -386,7 +386,7 @@ tests.test_output(output)
 ```
 
     Tests Passed
-    
+
 
 ### Create Convolutional Model
 Implement the function `conv_net` to create a convolutional neural network model. The function takes in a batch of images, `x`, and outputs logits.  Use the layers you created above to create this model:
@@ -410,27 +410,16 @@ def conv_net(x, keep_prob):
     layer = conv2d_maxpool(x, 64, (4,4), (1,1), (2,2), (2,2))
     tf.nn.dropout(layer, keep_prob=keep_prob)
     
-    # TODO: Apply a Flatten Layer
-    # Function Definition from Above:
-    #   flatten(x_tensor)
+    # Apply a Flatten Layer
     layer = flatten(layer)
 
-    # TODO: Apply 1, 2, or 3 Fully Connected Layers
-    #    Play around with different number of outputs
-    # Function Definition from Above:
-    #   fully_conn(x_tensor, num_outputs)
+    # Apply 2 Fully Connected Layers
     layer = fully_conn(layer,500)
     layer = tf.nn.dropout(layer, keep_prob)
     layer = fully_conn(layer,100)
     layer = tf.nn.dropout(layer, keep_prob)
     
-    # TODO: Apply an Output Layer
-    #    Set this to the number of classes
-    # Function Definition from Above:
-    #   output(x_tensor, num_outputs)
-    
-    
-    # TODO: return output
+    # Return output
     return output(layer,10)
   
     
@@ -469,7 +458,7 @@ tests.test_conv_net(conv_net)
 ```
 
     Neural Network Built!
-    
+
 
 ## Train the Neural Network
 ### Single Optimization
@@ -504,7 +493,7 @@ tests.test_train_nn(train_neural_network)
 ```
 
     Tests Passed
-    
+
 
 ### Show Stats
 Implement the function `print_stats` to print loss and validation accuracy.  Use the global variables `valid_features` and `valid_labels` to calculate validation accuracy.  Use a keep probability of `1.0` to calculate the loss and validation accuracy.
@@ -768,7 +757,7 @@ with tf.Session() as sess:
     Accuracy: 0.563800
     Epoch 100, CIFAR-10 Batch 1:  Loss:     0.0674
     Accuracy: 0.554400
-    
+
 
 ### Fully Train the Model
 Now that you got a good accuracy with a single CIFAR-10 batch, try it with all five batches.
@@ -1801,7 +1790,7 @@ with tf.Session() as sess:
     Accuracy: 0.633800
     Epoch 100, CIFAR-10 Batch 5:  Loss:     0.0804
     Accuracy: 0.645000
-    
+
 
 # Checkpoint
 The model has been saved to disk.
@@ -1878,7 +1867,7 @@ test_model()
     INFO:tensorflow:Restoring parameters from ./image_classification
     Testing Accuracy: 0.6417566657066345
     
-    
+
 
 
 ![png](output_36_1.png)
