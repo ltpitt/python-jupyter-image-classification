@@ -147,9 +147,6 @@ The one-hot encoding function should return the same encoding for each value bet
 Make sure to save the map of encodings outside the function.
 
 
-Hint: Don't reinvent the wheel.
-
-
 ```python
 lb_encoding = None
 def one_hot_encode(x):
