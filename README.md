@@ -392,7 +392,8 @@ def output(x_tensor, num_outputs):
     weight = tf.Variable(tf.truncated_normal(shape,0,0.01))
     bias = tf.Variable(tf.zeros(num_outputs))
     return tf.add(tf.matmul(x_tensor,weight), bias)
-    #return tf.contrib.layers.fully_connected(x_tensor, num_outputs)
+    # Implementation just using TensorFlow is commented below
+    #return tf.contrib.layers.fully_connected(x_tensor, num_outputs, activation_fn=None)
 
 
 """
