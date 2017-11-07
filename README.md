@@ -5,7 +5,7 @@ The dataset consists of airplanes, dogs, cats, and other objects.
 We'll preprocess the images, then train a convolutional neural network on all the samples.  
 The images need to be normalized and the labels need to be one-hot encoded.  
 We'll build a convolutional, max pooling, dropout, and fully connected layers.  
-At the end, we'll get to see your neural network's predictions on the sample images.  
+At the end, we'll get to see the neural network's predictions on the sample images.  
 
 ## Get the Data
 Run the following cell to download the [CIFAR-10 dataset for python](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz).
@@ -58,7 +58,7 @@ tests.test_folder_path(cifar10_dataset_folder_path)
 
 
 ## Explore the Data
-The dataset is broken into batches to prevent your machine from running out of memory.  
+The dataset is broken into batches to prevent a computer from running out of memory.  
 The CIFAR-10 dataset consists of 5 batches, named `data_batch_1`, `data_batch_2`, etc.  
 Each batch contains the labels and images that are one of the following:
 * airplane
@@ -73,11 +73,11 @@ Each batch contains the labels and images that are one of the following:
 * truck
 
 Understanding a dataset is part of making predictions on the data.  
-Play around with the code cell below by changing the `batch_id` and `sample_id`. The `batch_id` is the id for a batch (1-5).  
+Playing around with the code cell below by changing the `batch_id` and `sample_id`. The `batch_id` is the id for a batch (1-5).  
 The `sample_id` is the id for a image and label pair in the batch.
 
-Ask yourself "What are all possible labels?", "What is the range of values for the image data?", "Are the labels in order or random?".  
-Answers to questions like these will help you preprocess the data and end up with better predictions.
+Good questions to ask are "What are all possible labels?", "What is the range of values for the image data?", "Are the labels in order or random?".  
+Answers to questions like these will help to preprocess the data and end up with better predictions.
 
 
 ```python
@@ -111,11 +111,11 @@ helper.display_stats(cifar10_dataset_folder_path, batch_id, sample_id)
 ![png](output_3_1.png)
 
 
-## Implement Preprocess Functions
+## Preprocess Functions
 ### Normalize
-In the cell below, implement the `normalize` function to take in image data, `x`, and return it as a normalized Numpy array.  
-The values should be in the range of 0 to 1, inclusive.  
-The return object should be the same shape as `x`.
+The `normalize` function takes in image data, `x`, and returns it as a normalized Numpy array.  
+The values are in the range of 0 to 1, inclusive.  
+The return object is of the same shape as `x`.
 
 
 ```python
@@ -138,13 +138,13 @@ tests.test_normalize(normalize)
 
 
 ### One-hot encode
-Just like the previous code cell, you'll be implementing a function for preprocessing.  
-This time, you'll implement the `one_hot_encode` function.  
-The input, `x`, are a list of labels.  
-Implement the function to return the list of labels as One-Hot encoded Numpy array.  
+Another function for preprocessing.  
+This time the `one_hot_encode` function.  
+The input, `x`, is a list of labels.  
+The function to returns the list of labels as One-Hot encoded Numpy array.  
 The possible values for labels are 0 to 9.  
-The one-hot encoding function should return the same encoding for each value between each call to `one_hot_encode`.  
-Make sure to save the map of encodings outside the function.
+The one-hot encoding function returns the same encoding for each value between each call to `one_hot_encode`.  
+The map of encodings is saved outside the function.
 
 
 ```python
@@ -176,7 +176,7 @@ tests.test_one_hot_encode(one_hot_encode)
 
 
 ### Randomize Data
-As you saw from exploring the data above, the order of the samples are randomized.  It doesn't hurt to randomize it again, but you don't need to for this dataset.
+As we saw from exploring the data above, the order of the samples are randomized.  It doesn't hurt to randomize it again, but we don't need to for this dataset.
 
 ## Preprocess all the data and save it
 Running the code cell below will preprocess all the CIFAR-10 data and save it to file. The code below also uses 10% of the training data for validation.
@@ -191,7 +191,7 @@ helper.preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_
 ```
 
 # Check Point
-This is your first checkpoint.  If you ever decide to come back to this notebook or have to restart the notebook, you can start from here.  The preprocessed data has been saved to disk.
+This is the first checkpoint.  If we ever decide to come back to this notebook or have to restart the notebook, we can start from here.  The preprocessed data has been saved to disk.
 
 
 ```python
